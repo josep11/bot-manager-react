@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Icon, Menu, Table } from 'semantic-ui-react'
 import axios from "axios";
+import { dateToRelativeDate } from '../utils/utils';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
@@ -27,6 +28,7 @@ function ListTable() {
                 })
                 .then((response) => {
                     response.data.pk = response.data.pk.substring(3);
+                    response.data.date = dateToRelativeDate(response.data.date);
                     setAPIData(APIData => [...APIData, response.data]);
                 })
             // .catch(err => {
@@ -41,7 +43,7 @@ function ListTable() {
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>Bot Name</Table.HeaderCell>
-                    <Table.HeaderCell>Date</Table.HeaderCell>
+                    <Table.HeaderCell>Last Time Renewed</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
 
