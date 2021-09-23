@@ -44,8 +44,8 @@ function ListTable() {
         <Table celled className="list-table">
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell>Bot Name</Table.HeaderCell>
-                    <Table.HeaderCell>Últim Renovat</Table.HeaderCell>
+                    <Table.HeaderCell>Nom del Bot</Table.HeaderCell>
+                    <Table.HeaderCell textAlign='right'>Últim Renovat</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
 
