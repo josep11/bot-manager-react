@@ -1,7 +1,7 @@
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 export function dateToRelativeDate(date) {
-    const DB_DATEFORMAT = 'YYYY-MM-DD';
-    const myMoment = moment(date, DB_DATEFORMAT);
-    return myMoment.fromNow();
+    const DATEFORMAT = 'yyyy-MM-dd';
+    const myMoment = DateTime.fromFormat(date, DATEFORMAT);
+    return myMoment.setLocale('ca').toRelativeCalendar()
 }
