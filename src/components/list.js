@@ -20,6 +20,8 @@ function ListTable() {
     const [APIData, setAPIData] = useState([]);
 
     useEffect(() => {
+        document.title = 'Bot Manager';
+
         for (const pk of pks) {
             const url = `${baseURL}${encodeURIComponent(pk)}`;
             axios
