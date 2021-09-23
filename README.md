@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Bot Manager React
+
+[Production site](https://josep11.github.io/bot-manager-react/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -73,3 +77,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 https://www.freecodecamp.org/news/how-to-perform-crud-operations-using-react/
 https://react.semantic-ui.com/collections/table/#types-pagination
+
+### Deploy to GitHub Pages
+
+npm run deploy
