@@ -1659,10 +1659,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^8.0.0"
 
-"@testing-library/user-event@^13.2.1":
-  version "13.2.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.2.1.tgz#7a71a39e50b4a733afbe2916fa2b99966e941f98"
-  integrity sha512-cczlgVl+krjOb3j1625usarNEibI0IFRJrSWX9UsJ1HKYFgCQv9Nb7QAipUDXl3Xdz8NDTsiS78eAkPSxlzTlw==
+"@testing-library/user-event@^13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.3.0.tgz#2ce50953b885c452a2b2df880a1998637599dcf5"
+  integrity sha512-f8AJ8ybUna88Lmx3l5fuPMhzyyrcopQk/vgVDHVKOnOf2kkjfVSb0Px77iduHmh6uFUcXsD/z6qp4G13rObVrw==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -9122,13 +9122,6 @@ react-is@^16.6.3, react-is@^16.8.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
-
-react-loader-spinner@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-4.0.0.tgz#43d9e71b0574219f64216933c28ef5faa12262f6"
-  integrity sha512-RU2vpEej6G4ECei0h3q6bgLU10of9Lw5O+4AwF/mtkrX5oY20Sh/AxoPJ7etbrs/7Q3u4jN5qwCwGLRKCHpk6g==
-  dependencies:
-    prop-types "^15.7.2"
 
 react-loader-spinner@^4.0.0:
   version "4.0.0"
