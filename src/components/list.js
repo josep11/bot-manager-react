@@ -3,18 +3,14 @@ import { Icon, Menu, Table } from 'semantic-ui-react'
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import { dateToRelativeDate } from '../utils/utils';
+import { botNames, orderBots } from '../utils/botutils';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
 
-const botNames = [ //TODO: parametrise somewhere else
-    'Feinaactiva',
-    'Infofeina',
-    'Milanuncios',
-    'Wallapop'
-];
 const pks = botNames.map(e => createPk(e))
 const total_bots = botNames.length;
+
 const baseURL = 'https://zi9bgvb5e3.execute-api.eu-west-3.amazonaws.com/Prod/';
 
 function ListTable() {
@@ -32,7 +28,7 @@ function ListTable() {
                     headers: { 'Content-Type': 'application/json' }
                 })
                 .then((response) => {
-                    response.data.pk = response.data.pk.substring(3);
+                    response.data.name = response.data.pk.substring(3);
                     response.data.date = dateToRelativeDate(response.data.date);
                     setAPIData(APIData => [...APIData, response.data]);
                 })
@@ -42,6 +38,7 @@ function ListTable() {
                 // })
                 // eslint-disable-next-line no-loop-func
                 .finally(() => {
+                    setAPIData(APIData => orderBots(APIData, botNames))
                     if (++num_req_finished === total_bots) {
                         setSpinnerLoading(false);
                     }
@@ -72,7 +69,7 @@ function ListTable() {
                 {APIData && APIData.map((item, i) => (
                     < Table.Body key={i}>
                         <Table.Row>
-                            <Table.Cell>{item.pk}</Table.Cell>
+                            <Table.Cell>{item.name}</Table.Cell>
                             <Table.Cell textAlign='right'>{item.date}</Table.Cell>
                         </Table.Row>
                     </Table.Body>
