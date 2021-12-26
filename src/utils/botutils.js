@@ -4,7 +4,8 @@ export const botNames = [
     'Wallapop',
     'Feinaactiva',
     'Infofeina',
-    'DigitalNomads'
+    'DigitalNomads',
+    'MilanunciosDen',
 ];
 
 export const orderBots = (APIData, botNames) => {
