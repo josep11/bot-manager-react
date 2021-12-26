@@ -1,0 +1,27 @@
+bot-manager-react λ npm run build
+
+> bot-manager-react@0.1.0 build /Users/josepalsina/node/bot-manager-react
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  96.57 KB  build/static/css/2.a904a074.chunk.css
+  86.83 KB  build/static/js/2.75a68945.chunk.js
+  1.73 KB   build/static/js/3.61f08d40.chunk.js
+  1.35 KB   build/static/js/main.626052d3.chunk.js
+  1.18 KB   build/static/js/runtime-main.2b9ebb73.js
+  472 B     build/static/css/main.56467220.chunk.css
+
+The project was built assuming it is hosted at /bot-manager-react/.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+bot-manager-react λ 
