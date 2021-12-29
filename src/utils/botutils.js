@@ -6,6 +6,7 @@ export const botNames = [
     'Infofeina',
     'DigitalNomads',
     'MilanunciosDen',
+    'EleconomistaDownvote',
 ];
 
 export const orderBots = (APIData, botNames) => {
