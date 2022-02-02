@@ -7,6 +7,7 @@ export const botNames = [
     'DigitalNomads',
     'MilanunciosDen',
     'EleconomistaDownvote',
+    'RestartRouterBot',
 ];
 
 export const orderBots = (APIData, botNames) => {
