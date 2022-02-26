@@ -86,3 +86,6 @@ npm run deploy
 
 Add env files to React and not to .gitignore
 <https://anil-pace.medium.com/how-to-build-and-deploy-a-react-app-to-github-pages-in-less-than-5-minutes-55190fff25a4>
+
+FIX error on action:
+https://github.com/josep11/bot-manager-react/actions
