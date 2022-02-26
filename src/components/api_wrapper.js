@@ -9,6 +9,7 @@ const url = `${baseURL}${encodeURIComponent(pk)}`;
 
 export const getBotNames = async () => {
 
+    console.log(process.env)
     console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
     const resp = await axios
