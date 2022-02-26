@@ -18,7 +18,7 @@ export const getBotNames = async () => {
         });
     if (resp.status !== 200) {
         console.error(resp);
-        throw ('Error with request: ' + url);
+        throw new Error('Error with request: ' + url);
     }
     if (resp.data && resp.data.data && resp.data.data.botList) {
         return resp.data.data.botList;
