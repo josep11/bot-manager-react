@@ -75,9 +75,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Tutorial followed and how to continue
 
-https://www.freecodecamp.org/news/how-to-perform-crud-operations-using-react/
-https://react.semantic-ui.com/collections/table/#types-pagination
+<https://www.freecodecamp.org/news/how-to-perform-crud-operations-using-react/>
+<https://react.semantic-ui.com/collections/table/#types-pagination>
 
 ### Deploy to GitHub Pages
 
 npm run deploy
+
+### TODO
+
+Add env files to React and not to .gitignore
+<https://anil-pace.medium.com/how-to-build-and-deploy-a-react-app-to-github-pages-in-less-than-5-minutes-55190fff25a4>
