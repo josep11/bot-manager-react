@@ -2,8 +2,9 @@ import './App.css';
 import ListTable from "./components/list";
 
 function App() {
-  const { REACT_APP_API_AUTHORIZATION } = process.env;
-  console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
+  console.log(process.env);
+  // const { REACT_APP_API_AUTHORIZATION } = process.env;
+  // console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
   return (
     <div className="main">
