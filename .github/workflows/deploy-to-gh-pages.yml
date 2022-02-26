@@ -16,6 +16,7 @@ jobs:
           npm run-script build
         env:
           REACT_APP_API_AUTHORIZATION: ${{ secrets.REACT_APP_API_AUTHORIZATION }}
+          SAMPLE_ENV: holaaaa
 
 
       - name: Deploy 🚀

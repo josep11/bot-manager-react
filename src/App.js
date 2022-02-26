@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="main">
-      <h2 className="main-header">Bot Manager</h2>
+      <h2 className="main-header">Bot Managerrrrrrrr</h2>
       <div>
         <ListTable />
       </div>
