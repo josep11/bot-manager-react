@@ -14,7 +14,10 @@ export const getBotNames = async () => {
 
     const resp = await axios
         .get(url, {
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json',
+                // AuthorizationToken: REACT_APP_API_AUTHORIZATION,
+            }
         });
     if (resp.status !== 200) {
         console.error(resp);

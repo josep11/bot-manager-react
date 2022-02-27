@@ -80,7 +80,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Deploy to GitHub Pages
 
+It is done automatically with a Github Action that picks every commit pushed to the main branch and then deploys it with its CI/CD.
+
+It can be done manually (but then it won't pick env secrets defined in [here](https://github.com/josep11/bot-manager-react/settings/secrets/actions)):
+
+```shell
 npm run deploy
+```
 
 ### TODO
 
@@ -88,4 +94,4 @@ Add env files to React and not to .gitignore
 <https://anil-pace.medium.com/how-to-build-and-deploy-a-react-app-to-github-pages-in-less-than-5-minutes-55190fff25a4>
 
 FIX error on action:
-https://github.com/josep11/bot-manager-react/actions
+<https://github.com/josep11/bot-manager-react/actions>

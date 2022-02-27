@@ -18,7 +18,6 @@ jobs:
           REACT_APP_API_AUTHORIZATION: ${{ secrets.REACT_APP_API_AUTHORIZATION }}
           SAMPLE_ENV: holaaaa
 
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
