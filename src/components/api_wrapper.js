@@ -8,21 +8,22 @@ const pk = "BOT#BMR";
 const url = `${baseURL}${encodeURIComponent(pk)}`;
 
 export const getBotNames = async () => {
-    // console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
+    console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
-    const resp = await axios
-        .get(url, {
-            headers: {
-                'Content-Type': 'application/json',
-                // AuthorizationToken: REACT_APP_API_AUTHORIZATION,
-            }
-        });
-    if (resp.status !== 200) {
+    const resp = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            // AuthorizationToken: REACT_APP_API_AUTHORIZATION,
+        }
+    });
+    if (!resp.ok) {
         console.error(resp);
         throw new Error('Error with request: ' + url);
     }
-    if (resp.data && resp.data.data && resp.data.data.botList) {
-        return resp.data.data.botList;
+    const data = await resp.json()
+    if (data.data && data.data && data.data.botList) {
+        return data.data.botList;
     }
     return [];
 }

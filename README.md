@@ -2,6 +2,16 @@
 
 [Production site](https://josep11.github.io/bot-manager-react/)
 
+## Install
+
+```shell
+npm i
+# Need to create a .env or .env.development (https://stackoverflow.com/questions/49579028/adding-an-env-file-to-react-project)
+cp .env.example .env.development
+# now edit the corresponding env variables for your local run
+npm start
+```
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
