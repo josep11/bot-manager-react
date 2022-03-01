@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const baseURL = 'https://zi9bgvb5e3.execute-api.eu-west-3.amazonaws.com/Prod/';
 
 const { REACT_APP_API_AUTHORIZATION } = process.env;
@@ -26,4 +24,22 @@ export const getBotNames = async () => {
         return data.data.botList;
     }
     return [];
+}
+
+export const getLastRenewed = async (pk) => {
+    let url = `${baseURL}${encodeURIComponent(pk)}`;
+
+    // if (num_req_finished === 1 || num_req_finished === 2) { url += '4' }
+    const resp = await fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!resp.ok) {
+        console.error('Error with request on pk: ' + pk);
+        console.error(resp);
+        return null;
+    }
+
+    return await resp.json();
 }

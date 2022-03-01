@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Icon, Menu, Table } from 'semantic-ui-react'
-import axios from "axios";
 import Loader from "react-loader-spinner";
 import { dateToRelativeDate } from '../utils/utils';
 import { orderBots } from '../utils/botutils';
-import { baseURL, getBotNames } from './api_wrapper';
+import { getBotNames, getLastRenewed } from './api_wrapper';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
@@ -22,27 +21,21 @@ function ListTable() {
             document.title = 'Bot Manager';
             let num_req_finished = 0;
             for (const pk of pks) {
-                const url = `${baseURL}${encodeURIComponent(pk)}`;
-                axios
-                    .get(url, {
-                        headers: { 'Content-Type': 'application/json' }
-                    })
-                    .then((response) => {
-                        response.data.name = response.data.pk.substring(3);
-                        response.data.date = dateToRelativeDate(response.data.date);
-                        setAPIData(APIData => [...APIData, response.data]);
-                    })
-                    // .catch(err => {
-                    //     // console.error('THERE was an error');
-                    //     console.error(err);
-                    // })
-                    // eslint-disable-next-line no-loop-func
-                    .finally(() => {
-                        setAPIData(APIData => orderBots(APIData, botNames))
-                        if (++num_req_finished === total_bots) {
-                            setSpinnerLoading(false);
-                        }
-                    })
+
+                const data = await getLastRenewed(pk);
+
+                num_req_finished++;
+
+                if (!data) { continue; }
+
+                data.name = data.pk.substring(3);
+                data.date = dateToRelativeDate(data.date);
+                setAPIData(APIData => [...APIData, data]);
+
+                setAPIData(APIData => orderBots(APIData, botNames))
+                if (num_req_finished === total_bots) {
+                    setSpinnerLoading(false);
+                }
             }
         }
 
