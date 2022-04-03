@@ -1,6 +1,6 @@
 import './App.css';
 import ListTable from "./components/list";
-import { useTitle } from './components/utils';
+import { useTitle } from './utils/reactUtils';
 
 function App() {
   useTitle('Bot Manager');
