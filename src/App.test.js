@@ -3,7 +3,7 @@ import App from './App';
 import ListTable from './components/list';
 import { getBotNames } from './components/api_wrapper';
 
-// jest.setTimeout(20000);
+jest.setTimeout(10000);
 
 test('renders Nom del Bot header', () => {
   render(<App />);
@@ -24,8 +24,7 @@ test('renders data from xhr requests', async () => {
   // An update to ListTable inside a test was not wrapped in act(...).
   await act(async () => {
     render(<ListTable />);
-    // await new Promise((r) => setTimeout(r, 5000));
-
+    await new Promise((r) => setTimeout(r, 5000));
   })
   const el = screen.getByText(/Nom del Bot/i);
   expect(el).toBeInTheDocument();
