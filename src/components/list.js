@@ -3,6 +3,7 @@ import { Icon, Menu, Table } from 'semantic-ui-react'
 import { dateToRelativeDate, isDev } from '../utils/utils';
 import { orderBots } from '../utils/botutils';
 import { getBotNames, getLastRenewed } from './apiWrapper';
+import Loader from 'react-loader-spinner';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
