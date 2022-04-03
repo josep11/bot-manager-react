@@ -18,7 +18,6 @@ function ListTable() {
             const botNames = await getBotNames();
             const pks = botNames.map(e => createPk(e))
             const total_bots = botNames.length;
-            document.title = 'Bot Manager';
             let num_req_finished = 0;
             for (const pk of pks) {
 
