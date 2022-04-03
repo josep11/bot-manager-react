@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Icon, Menu, Table } from 'semantic-ui-react'
-import Loader from "react-loader-spinner";
-import { dateToRelativeDate } from '../utils/utils';
+import { dateToRelativeDate, isDev } from '../utils/utils';
 import { orderBots } from '../utils/botutils';
-import { getBotNames, getLastRenewed } from './api_wrapper';
-import { isDev } from './utils';
+import { getBotNames, getLastRenewed } from './apiWrapper';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;

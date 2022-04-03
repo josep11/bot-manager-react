@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import App from './App';
 import ListTable from './components/list';
-import { getBotNames } from './components/api_wrapper';
+import { getBotNames } from './components/apiWrapper';
 
 jest.setTimeout(10000);
 
