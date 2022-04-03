@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 import { dateToRelativeDate } from '../utils/utils';
 import { orderBots } from '../utils/botutils';
 import { getBotNames, getLastRenewed } from './api_wrapper';
+import { isDev } from './utils';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
@@ -15,7 +16,11 @@ function ListTable() {
 
     useEffect(() => {
         async function fetchAPI() {
-            const botNames = await getBotNames();
+            let botNames = await getBotNames();
+            if (isDev()) {
+                console.log('dev');
+                botNames = botNames.slice(0, 2);
+            }
             const pks = botNames.map(e => createPk(e))
             const total_bots = botNames.length;
             let num_req_finished = 0;
