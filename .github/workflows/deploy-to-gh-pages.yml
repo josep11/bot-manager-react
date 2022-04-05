@@ -16,6 +16,7 @@ jobs:
           npm run-script build
         env:
           # THE env variables need to begin with "REACT_APP"
+          NODE_ENV: production
           REACT_APP_API_AUTHORIZATION: ${{ secrets.REACT_APP_API_AUTHORIZATION }}
 
       - name: Deploy 🚀
