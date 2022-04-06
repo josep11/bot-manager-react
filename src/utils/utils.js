@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 
 export function dateToRelativeDate(date) {
+    if (!date) { return null }
     const myMoment = DateTime.fromISO(date);
     return myMoment.setLocale('ca').toRelativeCalendar()
 }

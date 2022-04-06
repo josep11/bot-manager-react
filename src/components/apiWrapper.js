@@ -37,7 +37,13 @@ export const getLastRenewed = async (pk) => {
 
     if (!resp.ok) {
         console.error('Error with request on pk: ' + pk);
+        
         console.error(resp);
+        if (resp.status === 404){
+            return {
+                pk
+            }
+        }
         return null;
     }
 

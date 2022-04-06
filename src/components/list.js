@@ -18,7 +18,7 @@ function ListTable() {
             let botNames = await getBotNames();
             if (isDev()) {
                 console.log('dev');
-                botNames = botNames.slice(0, 2);
+                botNames = botNames.slice(2, 4);
             }
             const pks = botNames.map(e => createPk(e))
             const total_bots = botNames.length;
