@@ -20,7 +20,7 @@ jobs:
           REACT_APP_API_AUTHORIZATION: ${{ secrets.REACT_APP_API_AUTHORIZATION }}
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.3.3
+        uses: JamesIves/github-pages-deploy-action@4.3.2
         with:
           branch: gh-pages
           folder: build
