@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Icon, Menu, Table } from 'semantic-ui-react'
-import { dateToRelativeDate, isDev } from '../utils/utils';
+import { dateToRelativeDate, isDev, parseDateTime } from '../utils/utils';
 import { orderBots } from '../utils/botutils';
 import { getBotNames, getLastRenewed } from './apiWrapper';
 import Loader from 'react-loader-spinner';
+import { DateTime } from 'luxon';
 
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
@@ -32,6 +33,8 @@ function ListTable() {
                 if (!data) { continue; }
 
                 data.name = data.pk.substring(3);
+                data.date = parseDateTime(data.date);
+                console.log(`${data.name}: ${data.date.toLocaleString(DateTime.DATETIME_SHORT)}`);
                 data.date = dateToRelativeDate(data.date);
                 setAPIData(APIData => [...APIData, data]);
 
