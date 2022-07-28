@@ -21,6 +21,8 @@ function ListTable() {
                 console.log('dev');
                 botNames = botNames.slice(2, 4);
             }
+            // Commented out bot names start with "#"
+            botNames = botNames.filter(e => !e.startsWith("#"));
             const pks = botNames.map(e => createPk(e))
             const total_bots = botNames.length;
             let num_req_finished = 0;
