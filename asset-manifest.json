@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bot-manager-react/static/css/main.56467220.chunk.css",
-    "main.js": "/bot-manager-react/static/js/main.a7a4a99e.chunk.js",
-    "main.js.map": "/bot-manager-react/static/js/main.a7a4a99e.chunk.js.map",
+    "main.js": "/bot-manager-react/static/js/main.b368dd77.chunk.js",
+    "main.js.map": "/bot-manager-react/static/js/main.b368dd77.chunk.js.map",
     "runtime-main.js": "/bot-manager-react/static/js/runtime-main.5edd62bd.js",
     "runtime-main.js.map": "/bot-manager-react/static/js/runtime-main.5edd62bd.js.map",
     "static/css/2.a904a074.chunk.css": "/bot-manager-react/static/css/2.a904a074.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.a904a074.chunk.css",
     "static/js/2.c31894d9.chunk.js",
     "static/css/main.56467220.chunk.css",
-    "static/js/main.a7a4a99e.chunk.js"
+    "static/js/main.b368dd77.chunk.js"
   ]
 }
