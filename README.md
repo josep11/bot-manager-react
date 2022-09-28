@@ -2,6 +2,8 @@
 
 [Production site](https://josep11.github.io/bot-manager-react/)
 
+See also how to get the info from the command line in [this repo](https://github.com/josep11/bot-manager-command.git)
+
 ## Install
 
 ```shell
