@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 /**
  * 
  * @param {DateTime} date 
- * @returns {string} relative date expressed like "ahir"
+ * @returns {?string} relative date expressed like "ahir"
  */
 export function dateToRelativeDate(date) {
     if (!date) { return null }
