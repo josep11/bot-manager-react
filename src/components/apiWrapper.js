@@ -13,6 +13,7 @@ export const getBotNames = async () => {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
+			"Authorization": "allow",
 			// AuthorizationToken: REACT_APP_API_AUTHORIZATION,
 		},
 	});
@@ -33,7 +34,10 @@ export const getLastRenewed = async (pk) => {
 	// if (num_req_finished === 1 || num_req_finished === 2) { url += '4' }
 	const resp = await fetch(url, {
 		method: "GET",
-		headers: { "Content-Type": "application/json" },
+		headers: { 
+			"Content-Type": "application/json",
+			"Authorization": "allow",
+		},
 	});
 
 	if (!resp.ok) {
