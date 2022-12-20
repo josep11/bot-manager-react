@@ -6,6 +6,14 @@ export const baseURL =
 const pk = "BOT#BMR";
 const url = `${baseURL}${encodeURIComponent(pk)}`;
 
+function getDefaultHeaders() {
+	return {
+		"Content-Type": "application/json",
+		Authorization: "allow",
+		// AuthorizationToken: REACT_APP_API_AUTHORIZATION,
+	};
+}
+
 export const getBotNames = async () => {
 	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
@@ -29,7 +37,7 @@ export const getBotNames = async () => {
 };
 
 export const getLastRenewed = async (pk) => {
-	let url = `${baseURL}${encodeURIComponent(pk)}`;
+	const url = `${baseURL}${encodeURIComponent(pk)}`;
 
 	// if (num_req_finished === 1 || num_req_finished === 2) { url += '4' }
 	const resp = await fetch(url, {
