@@ -7,11 +7,11 @@ See also how to get the info from the command line in [this repo](https://github
 ## Install
 
 ```shell
-npm i
+yarn install
 # Need to create a .env or .env.development (https://stackoverflow.com/questions/49579028/adding-an-env-file-to-react-project)
 cp .env.example .env.development
 # now edit the corresponding env variables for your local run
-npm start
+yarn start
 ```
 
 ## Getting Started with Create React App
