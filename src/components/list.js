@@ -3,7 +3,7 @@ import { Icon, Menu, Table } from 'semantic-ui-react'
 import { dateToRelativeDate, isDev, parseDateTime } from '../utils/utils';
 import { orderBots } from '../utils/botutils';
 import { getBotNames, getLastRenewed } from './apiWrapper';
-import Loader from 'react-loader-spinner';
+import { TailSpin } from 'react-loader-spinner';
 import { DateTime } from 'luxon';
 
 const createPk = (keyword) => `LR#${keyword}`;
@@ -58,9 +58,9 @@ function ListTable() {
     return (
         <div style={{ textAlign: "center" }} >
 
-            <Loader
+            <TailSpin
                 // textAlign="center"
-                type="TailSpin"
+                // type="TailSpin"
                 color="#00BFFF"
                 height={50}
                 width={50}
