@@ -35,7 +35,6 @@ export const getLastRenewed = async (pk) => {
 	const url = `${baseURL}${encodeURIComponent(pk)}`;
 
 	try {
-		// if (num_req_finished === 1 || num_req_finished === 2) { url += '4' }
 		const resp = await fetch(url, {
 			method: "GET",
 			headers: getDefaultHeaders(),

@@ -60,7 +60,6 @@ function ListTable() {
 
             <TailSpin
                 // textAlign="center"
-                // type="TailSpin"
                 color="#00BFFF"
                 height={50}
                 width={50}
