@@ -6,16 +6,19 @@ export const baseURL =
 const pk = "BOT#BMR";
 const url = `${baseURL}${encodeURIComponent(pk)}`;
 
+function getDefaultHeaders() {
+	return {
+		"Content-Type": "application/json",
+		Authorization: "allow",
+	};
+}
+
 export const getBotNames = async () => {
 	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
 	const resp = await fetch(url, {
 		method: "GET",
-		headers: {
-			"Content-Type": "application/json",
-			"Authorization": "allow",
-			// AuthorizationToken: REACT_APP_API_AUTHORIZATION,
-		},
+		headers: getDefaultHeaders(),
 	});
 	if (!resp.ok) {
 		console.error(resp);
@@ -29,28 +32,29 @@ export const getBotNames = async () => {
 };
 
 export const getLastRenewed = async (pk) => {
-	let url = `${baseURL}${encodeURIComponent(pk)}`;
+	const url = `${baseURL}${encodeURIComponent(pk)}`;
 
-	// if (num_req_finished === 1 || num_req_finished === 2) { url += '4' }
-	const resp = await fetch(url, {
-		method: "GET",
-		headers: { 
-			"Content-Type": "application/json",
-			"Authorization": "allow",
-		},
-	});
+	try {
+		// if (num_req_finished === 1 || num_req_finished === 2) { url += '4' }
+		const resp = await fetch(url, {
+			method: "GET",
+			headers: getDefaultHeaders(),
+		});
 
-	if (!resp.ok) {
-		console.error("Error with request on pk: " + pk);
+		if (!resp.ok) {
+			console.error("Error with request on pk: " + pk);
 
-		console.error(resp);
-		if (resp.status === 404) {
-			return {
-				pk,
-			};
+			console.error(resp);
+			if (resp.status === 404) {
+				return {
+					pk,
+				};
+			}
+			return null;
 		}
-		return null;
-	}
 
-	return await resp.json();
+		return await resp.json();
+	} catch (err) {
+		console.error(err);
+	}
 };

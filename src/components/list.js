@@ -9,6 +9,17 @@ import { DateTime } from 'luxon';
 const createPk = (keyword) => `LR#${keyword}`;
 // const createSk = dateFormatted => `#DATE#${dateFormatted}`;
 
+async function getBotNamesWrapper() {
+    let botNames = await getBotNames();
+    if (isDev()) {
+        console.log('dev');
+        botNames = botNames.slice(2, 4);
+    }
+    // Commented out bot names start with "#"
+    botNames = botNames.filter(e => !e.startsWith("#"));
+    return botNames;
+}
+
 function ListTable() {
 
     const [APIData, setAPIData] = useState([]);
@@ -16,13 +27,7 @@ function ListTable() {
 
     useEffect(() => {
         async function fetchAPI() {
-            let botNames = await getBotNames();
-            if (isDev()) {
-                console.log('dev');
-                botNames = botNames.slice(2, 4);
-            }
-            // Commented out bot names start with "#"
-            botNames = botNames.filter(e => !e.startsWith("#"));
+            const botNames = await getBotNamesWrapper();
             const pks = botNames.map(e => createPk(e))
             const total_bots = botNames.length;
             let num_req_finished = 0;
