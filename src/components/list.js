@@ -40,7 +40,9 @@ function ListTable() {
                 if (!data) { continue; }
 
                 data.name = data.pk.substring(3);
-                data.date = parseDateTime(data.date);
+                if (data.date) {
+                    data.date = parseDateTime(data.date);
+                }
                 console.log(`${data.name}: ${data.date.toLocaleString(DateTime.DATETIME_SHORT)}`);
                 data.date = dateToRelativeDate(data.date);
                 setAPIData(APIData => [...APIData, data]);

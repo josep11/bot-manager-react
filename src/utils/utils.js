@@ -18,7 +18,7 @@ export function dateToRelativeDate(date) {
 
 export function parseDateTime(date) {
     if (typeof date !== "string") {
-        throw Error('Input parameter date is not string');
+        throw Error('Input parameter date is not string. It is of type: ' + (typeof date));
     }
     return DateTime.fromISO(date);
 }
