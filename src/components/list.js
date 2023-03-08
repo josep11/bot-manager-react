@@ -20,6 +20,18 @@ async function getBotNamesWrapper() {
     return botNames;
 }
 
+/**
+ * 
+ * @param {string} date 
+ */
+function formatDate(date) {
+    if (date) {
+        date = parseDateTime(date);
+        date = dateToRelativeDate(date);
+    }
+    return date;
+}
+
 function ListTable() {
 
     const [APIData, setAPIData] = useState([]);
@@ -40,13 +52,10 @@ function ListTable() {
                 if (!data) { continue; }
 
                 data.name = data.pk.substring(3);
-                if (data.date) {
-                    data.date = parseDateTime(data.date);
-                }
-                console.log(`${data.name}: ${data.date.toLocaleString(DateTime.DATETIME_SHORT)}`);
-                data.date = dateToRelativeDate(data.date);
+                data.date = formatDate(data.date);
+                console.log(`${data.name}: ${data.date ? data.date.toLocaleString(DateTime.DATETIME_SHORT): ''}`);
+                
                 setAPIData(APIData => [...APIData, data]);
-
                 setAPIData(APIData => orderBots(APIData, botNames))
                 if (num_req_finished === total_bots) {
                     setSpinnerLoading(false);
