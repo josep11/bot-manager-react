@@ -44,6 +44,6 @@
     "web-vitals": "^3.1.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.17"
+    "@types/node": "^18.15.5"
   }
 }
