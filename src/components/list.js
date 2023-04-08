@@ -7,7 +7,6 @@ import { TailSpin } from "react-loader-spinner";
 import { DateTime } from "luxon";
 
 const createPk = (keyword) => `LR#${keyword}`;
-// const createSk = dateFormatted => `#DATE#${dateFormatted}`;
 
 async function getBotNamesWrapper() {
 	let botNames = await getBotNames();
