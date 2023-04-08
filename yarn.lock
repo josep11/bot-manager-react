@@ -1694,9 +1694,9 @@
     prop-types "^15.6.2"
 
 "@sinclair/typebox@^0.24.1":
-  version "0.24.21"
-  resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.24.21.tgz"
-  integrity sha512-II2SIjvxBVJmrGkkZYza/BqNjwx3PWROIA8CZ0/Hn7LV0Mv0CVpZxoyHGBVsQqfFLMv9DmArIeRHTwo76bE6oA==
+  version "0.24.51"
+  resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.24.51.tgz"
+  integrity sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==
 
 "@sinclair/typebox@^0.25.16":
   version "0.25.24"
