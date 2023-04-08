@@ -41,13 +41,14 @@ function ListTable() {
         async function fetchAPI() {
             const botNames = await getBotNamesWrapper();
             const pks = botNames.map(e => createPk(e))
-            const total_bots = botNames.length;
-            let num_req_finished = 0;
+            const countRequestsToDo = botNames.length;
+            let countRequestsDone = 0;
+
             for (const pk of pks) {
 
                 const data = await getLastRenewed(pk);
 
-                num_req_finished++;
+                countRequestsDone++;
 
                 if (!data) { continue; }
 
@@ -57,7 +58,7 @@ function ListTable() {
                 
                 setAPIData(APIData => [...APIData, data]);
                 setAPIData(APIData => orderBots(APIData, botNames))
-                if (num_req_finished === total_bots) {
+                if (countRequestsDone === countRequestsToDo) {
                     setSpinnerLoading(false);
                 }
             }
