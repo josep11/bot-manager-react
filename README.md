@@ -102,6 +102,5 @@ npm run deploy
 
 ### TODO
 
-- <https://www.youtube.com/watch?v=mgkgQtMplPY>
 - Login with Amplify
 - Remote disabling bot
