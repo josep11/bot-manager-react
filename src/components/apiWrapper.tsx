@@ -1,3 +1,5 @@
+import { LastRenewedResponse } from "./model/last-renewed-response";
+
 export const baseURL =
 	"https://qp8bbyuyxb.execute-api.eu-west-3.amazonaws.com/Prod/";
 
@@ -13,7 +15,7 @@ function getDefaultHeaders() {
 	};
 }
 
-export const getBotNames = async () => {
+export const getBotNames = async (): Promise<string[]> => {
 	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
 	const resp = await fetch(url, {
@@ -31,7 +33,9 @@ export const getBotNames = async () => {
 	return [];
 };
 
-export const getLastRenewed = async (pk) => {
+export const getLastRenewed = async (
+	pk: string
+): Promise<LastRenewedResponse | null> => {
 	const url = `${baseURL}${encodeURIComponent(pk)}`;
 
 	try {
@@ -52,8 +56,10 @@ export const getLastRenewed = async (pk) => {
 			return null;
 		}
 
-		return await resp.json();
+		const data = await resp.json();
+		return data as LastRenewedResponse;
 	} catch (err) {
 		console.error(err);
 	}
+	return null;
 };
