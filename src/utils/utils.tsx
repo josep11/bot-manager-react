@@ -5,7 +5,7 @@ import { DateTime } from "luxon";
  * @param {DateTime} date
  * @returns {?string} relative date expressed like "ahir"
  */
-export function dateToRelativeDate(date) {
+export function dateToRelativeDate(date: DateTime): string | null {
 	if (!date) {
 		return null;
 	}
@@ -18,7 +18,7 @@ export function dateToRelativeDate(date) {
 	return date.setLocale("ca").toRelativeCalendar();
 }
 
-export function parseDateTime(date) {
+export function parseDateTime(date: string | null) {
 	if (typeof date !== "string") {
 		throw Error(
 			"Input parameter date is not string. It is of type: " + typeof date
@@ -27,6 +27,6 @@ export function parseDateTime(date) {
 	return DateTime.fromISO(date);
 }
 
-export function isDev() {
+export function isDev(): boolean {
 	return !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 }
