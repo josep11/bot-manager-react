@@ -5,8 +5,9 @@ import { orderBots } from "../utils/botutils";
 import { getBotNames, getLastRenewed } from "./apiWrapper";
 import { TailSpin } from "react-loader-spinner";
 import { DateTime } from "luxon";
+import { LastRenewed } from "./model/last-renewed";
 
-const createPk = (keyword) => `LR#${keyword}`;
+const createPk = (keyword: string) => `LR#${keyword}`;
 
 async function getBotNamesWrapper() {
 	let botNames = await getBotNames();
@@ -15,18 +16,18 @@ async function getBotNamesWrapper() {
 		botNames = botNames.slice(2, 4);
 	}
 	// Commented out bot names start with "#"
-	botNames = botNames.filter((e) => !e.startsWith("#"));
+	botNames = botNames.filter((e: string) => !e.startsWith("#"));
 	return botNames;
 }
 
 function ListTable() {
-	const [APIData, setAPIData] = useState([]);
+	const [APIData, setAPIData] = useState<LastRenewed[]>([]);
 	const [spinnerLoading, setSpinnerLoading] = useState(true);
 
 	useEffect(() => {
 		async function fetchAPI() {
 			const botNames = await getBotNamesWrapper();
-			const pks = botNames.map((e) => createPk(e));
+			const pks = botNames.map((e: string) => createPk(e));
 			const countRequestsToDo = botNames.length;
 			let countRequestsDone = 0;
 
@@ -40,20 +41,19 @@ function ListTable() {
 				}
 
 				const name = data.pk.substring(3);
-				let lastRenewedTime = null,
-					dateLocaleString = null;
+				let lastRenewedTime: string | null = null,
+					dateLocaleString: string | null = null;
 
 				try {
 					const datetime = parseDateTime(data.date);
 					lastRenewedTime = datetime.toLocaleString(DateTime.TIME_24_SIMPLE);
 					dateLocaleString = dateToRelativeDate(datetime);
+					console.log(
+						`${name}: ${
+							datetime ? datetime.toLocaleString(DateTime.DATETIME_SHORT) : ""
+						}`
+					);
 				} catch (err) {}
-
-				console.log(
-					`${name}: ${
-						data.date ? data.date.toLocaleString(DateTime.DATETIME_SHORT) : ""
-					}`
-				);
 
 				setAPIData((APIData) => [
 					...APIData,

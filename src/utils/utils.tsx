@@ -18,7 +18,7 @@ export function dateToRelativeDate(date: DateTime): string | null {
 	return date.setLocale("ca").toRelativeCalendar();
 }
 
-export function parseDateTime(date: string | null) {
+export function parseDateTime(date: string | null | undefined) {
 	if (typeof date !== "string") {
 		throw Error(
 			"Input parameter date is not string. It is of type: " + typeof date
