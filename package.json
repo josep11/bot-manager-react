@@ -4,7 +4,7 @@
 	"private": true,
 	"homepage": "https://josep11.github.io/bot-manager-react",
 	"scripts": {
-    "start": "react-scripts start",
+		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --watchAll=false",
 		"eject": "react-scripts eject",
@@ -48,6 +48,7 @@
 		"web-vitals": "^3.3.1"
 	},
 	"devDependencies": {
+		"@types/luxon": "^3.3.0",
 		"@types/node": "^18.15.11"
 	}
 }
