@@ -13,7 +13,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
-          ls node_modules
+          ls -l node_modules/@types
           npm run-script build
         env:
           # THE env variables need to begin with "REACT_APP"
