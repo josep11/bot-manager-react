@@ -31,6 +31,6 @@ npm/audit-fix:
 update-deps:
 	ncu -x react-loader-spinner -x web-vitals -u && npm i && npm test
 
-.PHONY: list test
+.PHONY: list test build
 .PHONY: tag 
 .PHONY: all install node_modules
