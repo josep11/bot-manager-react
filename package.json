@@ -4,10 +4,10 @@
 	"private": true,
 	"homepage": "https://josep11.github.io/bot-manager-react",
 	"scripts": {
-		"start": "npx react-scripts start",
-		"build": "npx react-scripts build",
-		"test": "npx react-scripts test --watchAll=false",
-		"eject": "npx react-scripts eject",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --watchAll=false",
+		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build"
 	},
@@ -36,12 +36,12 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-loader-spinner": "^6.1.6",
+		"react-scripts": "^5.0.1",
 		"semantic-ui-css": "^2.5.0",
 		"semantic-ui-react": "^2.1.5",
-		"web-vitals": "^4.2.3"
+		"web-vitals": "^2.1.4"
 	},
 	"devDependencies": {
-		"@types/node": "^22.7.5",
-		"typescript": "^5.6.3"
+		"@types/node": "^22.7.5"
 	}
 }
