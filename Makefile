@@ -3,7 +3,8 @@ default: help
 include .make/*.mk
 
 ## start
-start: npm start
+start: 
+	npm start
 
 ## build
 build:
