@@ -12,8 +12,8 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          npm install
-          npm run-script build
+          make npm/i
+          make build
         env:
           # THE env variables need to begin with "REACT_APP"
           NODE_ENV: production
