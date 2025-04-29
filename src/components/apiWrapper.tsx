@@ -10,10 +10,34 @@ export const baseURL =
 const pkBMR = "BOT#BMR";
 const url = `${baseURL}${encodeURIComponent(pkBMR)}`;
 
+const authUrl = `${baseURL}auth`;
+
+export async function authenticate(username: string, password: string): Promise<void> {
+	const response = await fetch(authUrl, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'allow'
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password
+		}),
+	});
+
+	if (!response.ok) {
+		throw new Error('Authentication failed');
+	}
+}
+
 export function getDefaultHeaders() {
 	return {
 		"Content-Type": "application/json",
 		Authorization: "allow",
+		// TODO: remove this and try again
+		"Access-Control-Allow-Origin": "*",
+		"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+		"Access-Control-Allow-Headers": "Content-Type, Authorization"
 	};
 }
 

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { baseURL, getBotManagerList, getDefaultHeaders } from '../apiWrapper';
+import AuthForm from '../AuthForm/AuthForm';
 import { BotListData } from '../model/bot-list-data';
 import { parseBotListData, validateBotListData } from '../model/bot-list-parser';
 import './JsonEditor.css';
@@ -14,8 +15,16 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
     const [isValid, setIsValid] = useState<boolean>(true);
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
 
     useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        setIsAuthorized(!!token);
+    }, []);
+
+    useEffect(() => {
+        if (!isAuthorized) return;
+
         const fetchData = async () => {
             try {
                 const data = await getBotManagerList();
@@ -32,7 +41,16 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
         };
 
         fetchData();
-    }, [onError]);
+    }, [onError, isAuthorized]);
+
+    const handleAuthSuccess = () => {
+        setIsAuthorized(true);
+    };
+
+    const handleAuthError = (error: string) => {
+        setErrorMessage(error);
+        onError?.(error);
+    };
 
     const validateJson = useCallback((content: string): boolean => {
         try {
@@ -77,6 +95,10 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
             onError?.(errorMsg);
         }
     };
+
+    if (!isAuthorized) {
+        return <AuthForm onSuccess={handleAuthSuccess} onError={handleAuthError} />;
+    }
 
     if (isLoading) {
         return <div className="loading">Loading...</div>;
