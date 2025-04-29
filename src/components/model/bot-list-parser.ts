@@ -18,5 +18,5 @@ export const parseBotListData = (data: any): BotListData => {
     if (!validateBotListData(data)) {
         throw new Error('Invalid bot list data structure');
     }
-    return data;
+    return data as BotListData;
 }; 
