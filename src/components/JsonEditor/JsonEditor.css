@@ -4,6 +4,13 @@
   margin: 0 auto;
 }
 
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
 .file-input {
   margin-bottom: 20px;
 }

@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { baseURL, getDefaultHeaders } from '../apiWrapper';
+import React, { useCallback, useEffect, useState } from 'react';
+import { baseURL, getBotManagerList, getDefaultHeaders } from '../apiWrapper';
 import './JsonEditor.css';
 
 interface JsonEditorProps {
@@ -11,6 +11,26 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
     const [jsonContent, setJsonContent] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(true);
     const [errorMessage, setErrorMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getBotManagerList();
+                setJsonContent(JSON.stringify(data, null, 2));
+                setIsValid(true);
+                setErrorMessage('');
+            } catch (error) {
+                const errorMsg = error instanceof Error ? error.message : 'Failed to load data';
+                setErrorMessage(errorMsg);
+                onError?.(errorMsg);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [onError]);
 
     const validateJson = useCallback((content: string): boolean => {
         try {
@@ -20,19 +40,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
             return false;
         }
     }, []);
-
-    const handleFileLoad = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const content = e.target?.result as string;
-            setJsonContent(content);
-            setIsValid(validateJson(content));
-        };
-        reader.readAsText(file);
-    };
 
     const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const content = event.target.value;
@@ -48,7 +55,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
         }
 
         try {
-            const response = await fetch(`${baseURL}json`, {
+            const response = await fetch(`${baseURL}bot-manager-list`, {
                 method: 'POST',
                 headers: getDefaultHeaders(),
                 body: jsonContent,
@@ -68,16 +75,12 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
         }
     };
 
+    if (isLoading) {
+        return <div className="loading">Loading...</div>;
+    }
+
     return (
         <div className="json-editor">
-            <div className="file-input">
-                <input
-                    type="file"
-                    accept=".json"
-                    onChange={handleFileLoad}
-                    className="file-upload"
-                />
-            </div>
             <textarea
                 value={jsonContent}
                 onChange={handleContentChange}
