@@ -36,8 +36,6 @@ export const getBotNames = async (): Promise<string[]> => {
 export const getLastRenewed = async (
 	pk: string
 ): Promise<LastRenewedResponse | null> => {
-	const url = `${baseURL}${encodeURIComponent(pk)}`;
-
 	try {
 		const resp = await fetch(url, {
 			method: "GET",
