@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { baseURL, getBotManagerList, getDefaultHeaders } from '../apiWrapper';
+import { BotListData } from '../model/bot-list-data';
+import { parseBotListData, validateBotListData } from '../model/bot-list-parser';
 import './JsonEditor.css';
 
 interface JsonEditorProps {
-    onSave?: (data: any) => void;
+    onSave?: (data: BotListData) => void;
     onError?: (error: string) => void;
 }
 
@@ -34,8 +36,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
 
     const validateJson = useCallback((content: string): boolean => {
         try {
-            JSON.parse(content);
-            return true;
+            const parsed = JSON.parse(content);
+            return validateBotListData(parsed);
         } catch (error) {
             return false;
         }
@@ -49,8 +51,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
 
     const handleSave = async () => {
         if (!validateJson(jsonContent)) {
-            setErrorMessage('Invalid JSON format');
-            onError?.('Invalid JSON format');
+            setErrorMessage('Invalid JSON format or data structure');
+            onError?.('Invalid JSON format or data structure');
             return;
         }
 
@@ -66,7 +68,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
             }
 
             const data = await response.json();
-            onSave?.(data);
+            const parsedData = parseBotListData(data);
+            onSave?.(parsedData);
             setErrorMessage('');
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Failed to save JSON';
@@ -88,7 +91,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
                 rows={20}
                 cols={80}
             />
-            {!isValid && <div className="error-message">Invalid JSON format</div>}
+            {!isValid && <div className="error-message">Invalid JSON format or data structure</div>}
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <button
                 onClick={handleSave}
