@@ -1,11 +1,10 @@
-import { DateTime } from "luxon";
-import React, { useEffect, useState } from "react";
-import { TailSpin } from "react-loader-spinner";
-import { Icon, Menu } from "semantic-ui-react";
-import { orderBots } from "../utils/botutils";
+import React, { useState, useEffect } from "react";
+import { Icon, Menu, Table } from "semantic-ui-react";
 import { dateToRelativeDate, isDev, parseDateTime } from "../utils/utils";
+import { orderBots } from "../utils/botutils";
 import { getBotNames, getLastRenewed } from "./apiWrapper";
-import Table from './CustomTable';
+import { TailSpin } from "react-loader-spinner";
+import { DateTime } from "luxon";
 import { LastRenewed } from "./model/last-renewed";
 
 const createPk = (keyword: string) => `LR#${keyword}`;
@@ -34,8 +33,7 @@ function ListTable() {
 
 			for (const pk of pks) {
 				const data = await getLastRenewed(pk);
-				
-				console.log(data);
+
 				countRequestsDone++;
 
 				if (!data) {
@@ -74,17 +72,17 @@ function ListTable() {
 
 		fetchAPI();
 	}, [setAPIData]);
-
 	return (
 		<div style={{ textAlign: "center" }}>
 			<TailSpin
+				// textAlign="center"
 				color="#00BFFF"
 				height={50}
 				width={50}
 				visible={spinnerLoading}
 			/>
 
-			<Table celled={true} className="list-table">
+			<Table celled className="list-table">
 				<Table.Header>
 					<Table.Row>
 						<Table.HeaderCell>Nom del Bot</Table.HeaderCell>
