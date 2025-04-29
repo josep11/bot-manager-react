@@ -1,3 +1,5 @@
+import { BotListData } from "./model/bot-list-data";
+import { parseBotListData } from "./model/bot-list-parser";
 import { LastRenewedResponse } from "./model/last-renewed-response";
 
 export const baseURL =
@@ -15,9 +17,7 @@ export function getDefaultHeaders() {
 	};
 }
 
-export const getBotNames = async (): Promise<string[]> => {
-	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
-
+async function fetchBotListData() {
 	const resp = await fetch(url, {
 		method: "GET",
 		headers: getDefaultHeaders(),
@@ -27,6 +27,13 @@ export const getBotNames = async (): Promise<string[]> => {
 		throw new Error("Error with request: " + url);
 	}
 	const data = await resp.json();
+	return data;
+}
+
+export const getBotNames = async (): Promise<string[]> => {
+	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
+
+	const data = await fetchBotListData();
 	if (data.data && data.data && data.data.botList) {
 		return data.data.botList;
 	}
@@ -62,7 +69,7 @@ export const getLastRenewed = async (
 	return null;
 };
 
-export const getBotManagerList = async (): Promise<any> => {
+export const getBotManagerList = async (): Promise<BotListData> => {
 	try {
 		const mockJson = `{
  "pk": "BOT#BMR",
@@ -75,8 +82,7 @@ export const getBotManagerList = async (): Promise<any> => {
   ]
  }
 }`;
-		return JSON.parse(mockJson);
-
+		return parseBotListData(JSON.parse(mockJson));
 
 		const response = await fetch(`${baseURL}bot-manager-list`, {
 			method: "GET",
@@ -88,9 +94,10 @@ export const getBotManagerList = async (): Promise<any> => {
 		}
 
 		const data = await response.json();
-		return data;
+		return parseBotListData(data);
 	} catch (error) {
 		console.error("Error fetching bot manager list:", error);
 		throw error;
 	}
 };
+
