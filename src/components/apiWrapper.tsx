@@ -8,7 +8,7 @@ export const baseURL =
 const pk = "BOT#BMR";
 const url = `${baseURL}${encodeURIComponent(pk)}`;
 
-function getDefaultHeaders() {
+export function getDefaultHeaders() {
 	return {
 		"Content-Type": "application/json",
 		Authorization: "allow",
@@ -62,4 +62,37 @@ export const getLastRenewed = async (
 		console.error(err);
 	}
 	return null;
+};
+
+export const getBotManagerList = async (): Promise<any> => {
+	try {
+		const mockJson = `{
+ "pk": "BOT#BMR",
+ "data": {
+  "botList": [
+   "Impuls Bot"
+  ],
+  "botListNotIncluded": [
+   "DigitalNomads"
+  ]
+ }
+}`;
+		return JSON.parse(mockJson);
+
+
+		const response = await fetch(`${baseURL}bot-manager-list`, {
+			method: "GET",
+			headers: getDefaultHeaders(),
+		});
+
+		if (!response.ok) {
+			throw new Error("Failed to fetch bot manager list");
+		}
+
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error("Error fetching bot manager list:", error);
+		throw error;
+	}
 };
