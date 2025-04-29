@@ -7,8 +7,8 @@ export const baseURL =
 
 // const { REACT_APP_API_AUTHORIZATION } = process.env;
 
-const pk = "BOT#BMR";
-const url = `${baseURL}${encodeURIComponent(pk)}`;
+const pkBMR = "BOT#BMR";
+const url = `${baseURL}${encodeURIComponent(pkBMR)}`;
 
 export function getDefaultHeaders() {
 	return {
@@ -41,6 +41,8 @@ export const getBotNames = async (): Promise<string[]> => {
 export const getLastRenewed = async (
 	pk: string
 ): Promise<LastRenewedResponse | null> => {
+	const url = `${baseURL}${encodeURIComponent(pk)}`;
+
 	try {
 		const resp = await fetch(url, {
 			method: "GET",
