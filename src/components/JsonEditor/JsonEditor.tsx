@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { baseURL, getBotManagerList, getDefaultHeaders } from '../apiWrapper';
+import { BotListData } from '../model/bot-list-data';
 import './JsonEditor.css';
 
 interface JsonEditorProps {
-    onSave?: (data: any) => void;
+    onSave?: (data: BotListData) => void;
     onError?: (error: string) => void;
 }
 
@@ -13,10 +14,27 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    const validateBotListData = (data: any): data is BotListData => {
+        return (
+            typeof data === 'object' &&
+            data !== null &&
+            typeof data.pk === 'string' &&
+            typeof data.data === 'object' &&
+            data.data !== null &&
+            Array.isArray(data.data.botList) &&
+            data.data.botList.every((item: any) => typeof item === 'string') &&
+            Array.isArray(data.data.botListNotIncluded) &&
+            data.data.botListNotIncluded.every((item: any) => typeof item === 'string')
+        );
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await getBotManagerList();
+                if (!validateBotListData(data)) {
+                    throw new Error('Invalid data structure received from server');
+                }
                 setJsonContent(JSON.stringify(data, null, 2));
                 setIsValid(true);
                 setErrorMessage('');
@@ -34,8 +52,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
 
     const validateJson = useCallback((content: string): boolean => {
         try {
-            JSON.parse(content);
-            return true;
+            const parsed = JSON.parse(content);
+            return validateBotListData(parsed);
         } catch (error) {
             return false;
         }
@@ -49,8 +67,8 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
 
     const handleSave = async () => {
         if (!validateJson(jsonContent)) {
-            setErrorMessage('Invalid JSON format');
-            onError?.('Invalid JSON format');
+            setErrorMessage('Invalid JSON format or data structure');
+            onError?.('Invalid JSON format or data structure');
             return;
         }
 
@@ -66,6 +84,9 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
             }
 
             const data = await response.json();
+            if (!validateBotListData(data)) {
+                throw new Error('Invalid data structure received from server');
+            }
             onSave?.(data);
             setErrorMessage('');
         } catch (error) {
@@ -88,7 +109,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
                 rows={20}
                 cols={80}
             />
-            {!isValid && <div className="error-message">Invalid JSON format</div>}
+            {!isValid && <div className="error-message">Invalid JSON format or data structure</div>}
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <button
                 onClick={handleSave}
