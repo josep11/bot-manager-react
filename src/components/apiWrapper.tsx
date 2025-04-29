@@ -17,7 +17,7 @@ export function getDefaultHeaders() {
 	};
 }
 
-async function fetchBotListData() {
+async function fetchBotListData(): Promise<BotListData> {
 	const resp = await fetch(url, {
 		method: "GET",
 		headers: getDefaultHeaders(),
@@ -27,17 +27,15 @@ async function fetchBotListData() {
 		throw new Error("Error with request: " + url);
 	}
 	const data = await resp.json();
-	return data;
+	return parseBotListData(data);
 }
 
 export const getBotNames = async (): Promise<string[]> => {
 	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
-	const data = await fetchBotListData();
-	if (data.data && data.data && data.data.botList) {
-		return data.data.botList;
-	}
-	return [];
+	const botListData = await fetchBotListData();
+	console.log(botListData.data.botList);
+	return botListData.data.botList;
 };
 
 export const getLastRenewed = async (
@@ -70,7 +68,8 @@ export const getLastRenewed = async (
 };
 
 export const getBotManagerList = async (): Promise<BotListData> => {
-	try {
+	return await fetchBotListData();
+	/* Sample JSON Response
 		const mockJson = `{
  "pk": "BOT#BMR",
  "data": {
@@ -82,22 +81,6 @@ export const getBotManagerList = async (): Promise<BotListData> => {
   ]
  }
 }`;
-		return parseBotListData(JSON.parse(mockJson));
-
-		const response = await fetch(`${baseURL}bot-manager-list`, {
-			method: "GET",
-			headers: getDefaultHeaders(),
-		});
-
-		if (!response.ok) {
-			throw new Error("Failed to fetch bot manager list");
-		}
-
-		const data = await response.json();
-		return parseBotListData(data);
-	} catch (error) {
-		console.error("Error fetching bot manager list:", error);
-		throw error;
-	}
+*/
 };
 
