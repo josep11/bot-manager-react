@@ -15,8 +15,14 @@ const authUrl = `${baseURL}auth`;
 export async function authenticate(username: string, password: string): Promise<void> {
 	const response = await fetch(authUrl, {
 		method: 'POST',
-		headers: getDefaultHeaders(),
-		body: JSON.stringify({ username, password }),
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'allow'
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password
+		}),
 	});
 
 	if (!response.ok) {
