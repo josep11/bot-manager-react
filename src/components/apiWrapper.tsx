@@ -34,10 +34,10 @@ export function getDefaultHeaders() {
 	return {
 		"Content-Type": "application/json",
 		Authorization: "allow",
-		// TODO: remove this and try again
-		"Access-Control-Allow-Origin": "*",
-		"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-		"Access-Control-Allow-Headers": "Content-Type, Authorization"
+		// With the following it will not work
+		// "Access-Control-Allow-Origin": "*",
+		// "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+		// "Access-Control-Allow-Headers": "Content-Type, Authorization"
 	};
 }
 
