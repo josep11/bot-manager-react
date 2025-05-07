@@ -75,8 +75,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
         }
 
         try {
-            // TODO: fix this
-            const response = await fetch(`${baseURL}bot-manager-list`, {
+            const response = await fetch(baseURL, {
                 method: 'POST',
                 headers: getDefaultHeaders(),
                 body: jsonContent,
