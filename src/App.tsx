@@ -11,11 +11,11 @@ function App() {
     <Router>
       <div className="main">
         <nav className="main-nav">
-          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/bot-manager-react" className="nav-link">Home</Link>
           <Link to="/json-editor" className="nav-link">JSON Editor</Link>
         </nav>
         <Routes>
-          <Route path="/" element={
+          <Route path="/bot-manager-react" element={
             <>
               <h2 className="main-header">Bot Manager Pro</h2>
               <div>
