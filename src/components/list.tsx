@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Icon, Menu, Table } from "semantic-ui-react";
-import { dateToRelativeDate, isDev, parseDateTime } from "../utils/utils";
-import { orderBots } from "../utils/botutils";
-import { getBotNames, getLastRenewed } from "./apiWrapper";
-import { TailSpin } from "react-loader-spinner";
 import { DateTime } from "luxon";
+import React, { useEffect, useState } from "react";
+import { TailSpin } from "react-loader-spinner";
+import { Icon, Menu, Table } from "semantic-ui-react";
+import { orderBots } from "../utils/botutils";
+import { dateToRelativeDate, isDev, parseDateTime } from "../utils/utils";
+import { getBotNames, getLastRenewed } from "./apiWrapper";
 import { LastRenewed } from "./model/last-renewed";
 
 const createPk = (keyword: string) => `LR#${keyword}`;
@@ -93,7 +93,7 @@ function ListTable() {
 
 				{APIData &&
 					APIData.map((item, i) => (
-						<Table.Body key={i}>
+						<Table.Body key={item.name}>
 							<Table.Row>
 								<Table.Cell>{item.name}</Table.Cell>
 								<Table.Cell textAlign="right">
