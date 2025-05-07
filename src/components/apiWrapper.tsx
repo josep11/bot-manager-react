@@ -1,16 +1,14 @@
+import { getBaseUrl } from "./config";
 import { BotListData } from "./model/bot-list-data";
 import { parseBotListData } from "./model/bot-list-parser";
 import { LastRenewedResponse } from "./model/last-renewed-response";
 
-export const baseURL =
-	"https://qp8bbyuyxb.execute-api.eu-west-3.amazonaws.com/Prod/";
-
 // const { REACT_APP_API_AUTHORIZATION } = process.env;
-
+const baseUrl = getBaseUrl();
 const pkBMR = "BOT#BMR";
-export const botListUrl = `${baseURL}${encodeURIComponent(pkBMR)}`;
+export const botListUrl = `${baseUrl}${encodeURIComponent(pkBMR)}`;
 
-const authUrl = `${baseURL}auth`;
+const authUrl = `${baseUrl}auth`;
 
 export async function authenticate(username: string, password: string): Promise<void> {
 	const response = await fetch(authUrl, {
@@ -65,7 +63,7 @@ export const getBotNames = async (): Promise<string[]> => {
 export const getLastRenewed = async (
 	pk: string
 ): Promise<LastRenewedResponse | null> => {
-	const url = `${baseURL}${encodeURIComponent(pk)}`;
+	const url = `${baseUrl}${encodeURIComponent(pk)}`;
 
 	try {
 		const resp = await fetch(url, {

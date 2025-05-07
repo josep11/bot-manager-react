@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { baseURL, getBotManagerList, getDefaultHeaders } from '../apiWrapper';
+import { getBotManagerList, getDefaultHeaders } from '../apiWrapper';
 import AuthForm from '../AuthForm/AuthForm';
+import { getBaseUrl } from '../config';
 import { BotListData } from '../model/bot-list-data';
 import { parseBotListData, validateBotListData } from '../model/bot-list-parser';
 import './JsonEditor.css';
 
+const baseUrl = getBaseUrl();
 interface JsonEditorProps {
     onSave?: (data: BotListData) => void;
     onError?: (error: string) => void;
@@ -75,7 +77,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
         }
 
         try {
-            const response = await fetch(baseURL, {
+            const response = await fetch(baseUrl, {
                 method: 'POST',
                 headers: getDefaultHeaders(),
                 body: jsonContent,
