@@ -1,9 +1,9 @@
-const { BASE_URL } = process.env;
+const { REACT_APP_BASE_URL } = process.env;
 
-if (!BASE_URL) {
+if (!REACT_APP_BASE_URL) {
     throw Error("fix env");
 }
 
 export function getBaseUrl(): string {
-    return String(BASE_URL);
+    return String(REACT_APP_BASE_URL);
 }
