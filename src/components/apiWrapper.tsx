@@ -8,7 +8,7 @@ export const baseURL =
 // const { REACT_APP_API_AUTHORIZATION } = process.env;
 
 const pkBMR = "BOT#BMR";
-const url = `${baseURL}${encodeURIComponent(pkBMR)}`;
+export const botListUrl = `${baseURL}${encodeURIComponent(pkBMR)}`;
 
 const authUrl = `${baseURL}auth`;
 
@@ -42,13 +42,13 @@ export function getDefaultHeaders() {
 }
 
 async function fetchBotListData(): Promise<BotListData> {
-	const resp = await fetch(url, {
+	const resp = await fetch(botListUrl, {
 		method: "GET",
 		headers: getDefaultHeaders(),
 	});
 	if (!resp.ok) {
 		console.error(resp);
-		throw new Error("Error with request: " + url);
+		throw new Error("Error with request: " + botListUrl);
 	}
 	const data = await resp.json();
 	return parseBotListData(data);
