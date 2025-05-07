@@ -1,7 +1,12 @@
 import { act, render, screen } from '@testing-library/react';
 import App from './App';
-import ListTable from './components/list';
 import { getBotNames } from './components/apiWrapper';
+import ListTable from './components/list';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => jest.fn(),
+}));
 
 jest.setTimeout(10000);
 
