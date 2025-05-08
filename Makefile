@@ -32,5 +32,5 @@ update-deps:
 	ncu -x react-loader-spinner -x web-vitals -x react -x react-dom -u && npm i && npm test
 
 .PHONY: list test build
-.PHONY: tag 
+.PHONY: tag
 .PHONY: all install node_modules

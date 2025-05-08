@@ -439,31 +439,23 @@
   resolved "https://registry.npmjs.org/@types/luxon/-/luxon-3.6.2.tgz"
   integrity sha512-R/BdP7OxEMc44l2Ex5lSXHoIXTB2JLNa3y2QISIbr58U/YcsffyQrYW//hZSdrfxrjRZj3GcUoxMPGdO8gSYuw==
 
-"@types/node@*", "@types/node@^18.0.0 || ^20.0.0 || >=22.0.0", "@types/node@^22.15.15":
-  version "22.15.15"
-  resolved "https://registry.npmjs.org/@types/node/-/node-22.15.15.tgz"
-  integrity sha512-R5muMcZob3/Jjchn5LcO8jdKwSCbzqmPB6ruBxMcf9kbxtniZHP327s6C37iOfuw8mbKK3cAQa7sEl7afLrQ8A==
+"@types/node@*", "@types/node@^18.0.0 || ^20.0.0 || >=22.0.0", "@types/node@^22.15.16":
+  version "22.15.16"
+  resolved "https://registry.npmjs.org/@types/node/-/node-22.15.16.tgz"
+  integrity sha512-3pr+KjwpVujqWqOKT8mNR+rd09FqhBLwg+5L/4t0cNYBzm/yEiYGCxWttjaPBsLtAo+WFNoXzGJfolM1JuRXoA==
   dependencies:
     undici-types "~6.21.0"
 
-"@types/prop-types@*":
-  version "15.7.5"
-  resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
-  integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+"@types/react-dom@^18.0.0 || ^19.0.0", "@types/react-dom@^19.1.3":
+  version "19.1.3"
+  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.1.3.tgz"
+  integrity sha512-rJXC08OG0h3W6wDMFxQrZF00Kq6qQvw0djHRdzl3U5DnIERz0MRce3WVc7IS6JYBwtaP/DwYtRRjVlvivNveKg==
 
-"@types/react-dom@^18.0.0 || ^19.0.0", "@types/react-dom@^18.3.1":
-  version "18.3.1"
-  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.3.1.tgz"
-  integrity sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==
+"@types/react@^18.0.0 || ^19.0.0", "@types/react@^19.0.0", "@types/react@^19.1.3":
+  version "19.1.3"
+  resolved "https://registry.npmjs.org/@types/react/-/react-19.1.3.tgz"
+  integrity sha512-dLWQ+Z0CkIvK1J8+wrDPwGxEYFA4RAyHoZPxHVGspYmFVnwGSNT24cGIhFJrtfRnWVuW8X7NO52gCXmhkVUWGQ==
   dependencies:
-    "@types/react" "*"
-
-"@types/react@*", "@types/react@^18.0.0 || ^19.0.0", "@types/react@^18.3.11":
-  version "18.3.11"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.3.11.tgz"
-  integrity sha512-r6QZ069rFTjrEYgFdOck1gK7FLVsgJE7tTz0pQBczlBNUhBNk0MQH4UbnFSwjpQLMkLzgqvBBa+qGpLje16eTQ==
-  dependencies:
-    "@types/prop-types" "*"
     csstype "^3.0.2"
 
 "@types/stack-utils@^2.0.0":
@@ -488,7 +480,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vitejs/plugin-react@^4.2.1":
+"@vitejs/plugin-react@^4.4.1":
   version "4.4.1"
   resolved "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-4.4.1.tgz"
   integrity sha512-IpEm5ZmeXAP/osiBXVVP5KjFMzbWOonMs0NaQQl+xYnUAcq4oHUBsF2+p4MgKWG4YMmFYJU8A6sxRPuowllm6w==
