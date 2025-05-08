@@ -1,9 +1,11 @@
-const { REACT_APP_BASE_URL } = process.env;
+console.log(import.meta.env);
 
-if (!REACT_APP_BASE_URL) {
-    throw Error("fix env");
+const { VITE_API_BASE_URL } = import.meta.env;
+
+if (!VITE_API_BASE_URL) {
+    throw Error("VITE_API_BASE_URL environment variable is not set");
 }
 
 export function getBaseUrl(): string {
-    return String(REACT_APP_BASE_URL);
+    return String(VITE_API_BASE_URL);
 }
