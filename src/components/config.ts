@@ -1,5 +1,3 @@
-console.log(import.meta.env);
-
 const { VITE_API_BASE_URL } = import.meta.env;
 
 if (!VITE_API_BASE_URL) {
