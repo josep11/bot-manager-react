@@ -12,13 +12,6 @@ afterEach(() => {
   vi.clearAllTimers();
 });
 
-// jest.mock('react-router-dom', () => ({
-//   ...jest.requireActual('react-router-dom'),
-//   useNavigate: () => jest.fn(),
-// }));
-
-// jest.setTimeout(10000);
-
 test('renders Nom del Bot header', () => {
   render(<App />);
   const el = screen.getByText(/Manager/i);
@@ -35,7 +28,7 @@ test('should import botNames', async () => {
 
 test('renders data from xhr requests', async () => {
   render(<ListTable />);
-  
+
   // Wait for the header text to appear with a timeout
   const headerElement = await screen.findByText(/Nom del Bot/i, {}, { timeout: 5000 });
   expect(headerElement).toBeInTheDocument();
