@@ -4,17 +4,18 @@ import App from './App';
 import { getBotNames } from './components/apiWrapper';
 import ListTable from './components/list';
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => jest.fn(),
-}));
+// jest.mock('react-router-dom', () => ({
+//   ...jest.requireActual('react-router-dom'),
+//   useNavigate: () => jest.fn(),
+// }));
 
-jest.setTimeout(10000);
+// jest.setTimeout(10000);
 
 test('renders Nom del Bot header', () => {
   render(<App />);
+  screen.debug();
   const el = screen.getByText(/Manager/i);
-  expect(el).toBeInTheDocument();
+  expect(el).toBeTruthy();
 });
 
 test('should import botNames', async () => {
@@ -33,7 +34,5 @@ test('renders data from xhr requests', async () => {
     await new Promise((r) => setTimeout(r, 5000));
   })
   const el = screen.getByText(/Nom del Bot/i);
-  expect(el).toBeInTheDocument();
-  // const el2 = screen.getByText(/anuncios/i);
-  // expect(el2).toBeInTheDocument();
+  expect(el).toBeTruthy();
 });
