@@ -17,8 +17,8 @@ jobs:
         env:
           # THE env variables need to begin with "REACT_APP"
           NODE_ENV: production
-          REACT_APP_API_AUTHORIZATION: ${{ secrets.REACT_APP_API_AUTHORIZATION }}
-          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          VITE_API_API_AUTHORIZATION: ${{ secrets.VITE_API_API_AUTHORIZATION }}
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.7.3
