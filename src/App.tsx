@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div className="main">
         <nav className="main-nav">
-          <Link to="/bot-manager-react" className="nav-link">Home</Link>
+          <Link to="/bot-manager-react" className="nav-link">Bot Manager</Link>
           <Link to="/json-editor" className="nav-link">JSON Editor</Link>
         </nav>
         <Routes>
