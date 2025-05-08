@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/bot-manager-react/static/css/main.1f3d2314.css",
-    "main.js": "/bot-manager-react/static/js/main.7cbb5478.js",
-    "static/js/453.f3178ed6.chunk.js": "/bot-manager-react/static/js/453.f3178ed6.chunk.js",
+    "main.css": "/bot-manager-react/static/css/main.577b7e52.css",
+    "main.js": "/bot-manager-react/static/js/main.303f5388.js",
+    "static/js/488.222ac426.chunk.js": "/bot-manager-react/static/js/488.222ac426.chunk.js",
     "static/media/brand-icons.svg": "/bot-manager-react/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/bot-manager-react/static/media/icons.62d9dae4e0040e81c980.svg",
     "static/media/outline-icons.svg": "/bot-manager-react/static/media/outline-icons.9c4845b4b41ef40a22fa.svg",
@@ -20,12 +20,12 @@
     "static/media/outline-icons.woff": "/bot-manager-react/static/media/outline-icons.ddae9b1ba9b0b42f5880.woff",
     "static/media/outline-icons.woff2": "/bot-manager-react/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
     "index.html": "/bot-manager-react/index.html",
-    "main.1f3d2314.css.map": "/bot-manager-react/static/css/main.1f3d2314.css.map",
-    "main.7cbb5478.js.map": "/bot-manager-react/static/js/main.7cbb5478.js.map",
-    "453.f3178ed6.chunk.js.map": "/bot-manager-react/static/js/453.f3178ed6.chunk.js.map"
+    "main.577b7e52.css.map": "/bot-manager-react/static/css/main.577b7e52.css.map",
+    "main.303f5388.js.map": "/bot-manager-react/static/js/main.303f5388.js.map",
+    "488.222ac426.chunk.js.map": "/bot-manager-react/static/js/488.222ac426.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f3d2314.css",
-    "static/js/main.7cbb5478.js"
+    "static/css/main.577b7e52.css",
+    "static/js/main.303f5388.js"
   ]
 }
