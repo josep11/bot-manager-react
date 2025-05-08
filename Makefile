@@ -29,7 +29,7 @@ npm/audit-fix:
 
 ## Run update deps for all of them
 update-deps:
-	ncu -x react-loader-spinner -x web-vitals -x react -x react-dom -u && npm i && npm test
+	ncu -x web-vitals && npm i && npm test
 
 .PHONY: list test build
 .PHONY: tag
