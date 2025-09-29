@@ -12,7 +12,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          make npm/i
+          make npm/i-legacy
           make build
         env:
           # THE env variables need to begin with "REACT_APP"

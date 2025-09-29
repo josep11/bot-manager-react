@@ -102,5 +102,5 @@ npm run deploy
 
 ### TODO
 
-- Login with Amplify
-- Remote disabling bot
+- Review usage of make target "npm/i-legacy" dependent on incompatibility of semantic-ui-react with react 19
+
