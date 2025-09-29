@@ -19,6 +19,10 @@ build-watch:
 npm/i:
 	npm i
 
+## Install the dependencies (ignoring peer-dep conflicts)
+npm/i-legacy:
+	npm i --legacy-peer-deps
+
 ## Run npm audit
 npm/audit:
 	npm audit
