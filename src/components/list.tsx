@@ -70,7 +70,7 @@ function ListTable() {
 		}
 
 		fetchAPI();
-	}, [setAPIData]);
+	}, []);
 
 	return (
 		<div style={{ textAlign: "center" }}>
