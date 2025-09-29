@@ -39,10 +39,13 @@ export function getDefaultHeaders() {
 	};
 }
 
-async function fetchBotListData(): Promise<BotListData> {
+async function fetchBotListData(
+	abortController?: AbortController,
+): Promise<BotListData> {
 	const resp = await fetch(botListUrl, {
 		method: "GET",
 		headers: getDefaultHeaders(),
+		signal: abortController?.signal,
 	});
 	if (!resp.ok) {
 		console.error(resp);
@@ -52,10 +55,12 @@ async function fetchBotListData(): Promise<BotListData> {
 	return parseBotListData(data);
 }
 
-export const getBotNames = async (): Promise<string[]> => {
+export const getBotNames = async (
+	abortController?: AbortController,
+): Promise<string[]> => {
 	// console.log(`REACT_APP_API_AUTHORIZATION = ${REACT_APP_API_AUTHORIZATION}`);
 
-	const botListData = await fetchBotListData();
+	const botListData = await fetchBotListData(abortController);
 	console.log(botListData.data.botList);
 	return botListData.data.botList;
 };
