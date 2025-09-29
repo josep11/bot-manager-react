@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'sonner';
 import JsonEditor from '../components/JsonEditor/JsonEditor';
 import { useTitle } from '../utils/reactUtils';
 
@@ -6,11 +7,13 @@ const JsonEditorPage: React.FC = () => {
     useTitle('Bot Manager - JSON Editor');
 
     const handleSave = (data: any) => {
+        toast("JSON saved successfully");
         console.log('JSON saved successfully:', data);
     };
 
     const handleError = (error: string) => {
         console.error('Error:', error);
+        toast("Error saving JSON");
     };
 
     return (
