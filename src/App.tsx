@@ -8,6 +8,7 @@ import { useTitle } from './utils/reactUtils';
 // TODO: see why the hell is the react app mounting twice when on development
 function App() {
   useTitle('Bot Manager');
+
   return (
     <Router>
       <div className="main">
