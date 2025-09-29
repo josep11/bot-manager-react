@@ -19,6 +19,10 @@ build-watch:
 npm/i:
 	npm i
 
+## Install the dependencies (ignoring peer-dep conflicts)
+npm/i-legacy:
+	npm i --legacy-peer-deps
+
 ## Run npm audit
 npm/audit:
 	npm audit
@@ -29,7 +33,7 @@ npm/audit-fix:
 
 ## Run update deps for all of them
 update-deps:
-	ncu -u -x web-vitals -x react-loader-spinner && npm i && npm test
+	ncu -u -x web-vitals && npm i && npm test
 
 .PHONY: list test build
 .PHONY: tag
