@@ -1,4 +1,5 @@
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Toaster } from 'sonner';
 import './App.css';
 import ListTable from "./components/list";
 import JsonEditorPage from './pages/JsonEditorPage';
@@ -11,11 +12,11 @@ function App() {
     <Router>
       <div className="main">
         <nav className="main-nav">
-          <Link to="/bot-manager-react" className="nav-link">Bot Manager</Link>
+          <Link to="/bot-manager-react/" className="nav-link">Bot Manager</Link>
           <Link to="/json-editor" className="nav-link">JSON Editor</Link>
         </nav>
         <Routes>
-          <Route path="/bot-manager-react" element={
+          <Route path="/bot-manager-react/" element={
             <>
               <h2 className="main-header">Bot Manager Pro</h2>
               <div>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/json-editor" element={<JsonEditorPage />} />
         </Routes>
       </div>
+      <Toaster />
     </Router>
   );
 }
