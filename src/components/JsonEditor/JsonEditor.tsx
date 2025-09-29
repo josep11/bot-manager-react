@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { getBotManagerList, getDefaultHeaders } from '../apiWrapper';
 import AuthForm from '../AuthForm/AuthForm';
 import { getBaseUrl } from '../config';
@@ -47,11 +48,13 @@ const JsonEditor: React.FC<JsonEditorProps> = ({ onSave, onError }) => {
 
     const handleAuthSuccess = () => {
         setIsAuthorized(true);
+        toast("Login ok");
     };
 
     const handleAuthError = (error: string) => {
         setErrorMessage(error);
         onError?.(error);
+        toast("Login error");
     };
 
     const validateJson = useCallback((content: string): boolean => {

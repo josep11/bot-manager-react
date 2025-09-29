@@ -103,4 +103,5 @@ npm run deploy
 ### TODO
 
 - Review usage of make target "npm/i-legacy" dependent on incompatibility of semantic-ui-react with react 19
+    https://github.com/Semantic-Org/Semantic-UI-React/issues/4528
 
