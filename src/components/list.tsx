@@ -25,14 +25,20 @@ function ListTable() {
 	const [spinnerLoading, setSpinnerLoading] = useState(true);
 
 	useEffect(() => {
+		const abortController = new AbortController();
+
 		async function fetchAPI() {
+			// TODO: pass abortcontroller here as well
 			const botNames = await getBotNamesWrapper();
 			const pks = botNames.map((e: string) => createPk(e));
 			const countRequestsToDo = botNames.length;
 			let countRequestsDone = 0;
 
 			for (const pk of pks) {
-				const data = await getLastRenewed(pk);
+				const data = await getLastRenewed(
+					pk,
+					abortController,
+				);
 
 				countRequestsDone++;
 
@@ -70,6 +76,10 @@ function ListTable() {
 		}
 
 		fetchAPI();
+
+		return () => {
+			abortController.abort(); // cancel the fetch on unmount
+		}
 	}, []);
 
 	return (

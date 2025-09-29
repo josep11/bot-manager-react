@@ -61,7 +61,8 @@ export const getBotNames = async (): Promise<string[]> => {
 };
 
 export const getLastRenewed = async (
-	pk: string
+	pk: string,
+	abortController?: AbortController,
 ): Promise<LastRenewedResponse | null> => {
 	const url = `${baseUrl}${encodeURIComponent(pk)}`;
 
@@ -69,6 +70,7 @@ export const getLastRenewed = async (
 		const resp = await fetch(url, {
 			method: "GET",
 			headers: getDefaultHeaders(),
+			signal: abortController?.signal
 		});
 
 		if (!resp.ok) {
