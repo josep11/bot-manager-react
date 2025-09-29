@@ -9,8 +9,10 @@ import { LastRenewed } from "./model/last-renewed";
 
 const createPk = (keyword: string) => `LR#${keyword}`;
 
-async function getBotNamesWrapper() {
-	let botNames = await getBotNames();
+async function getBotNamesWrapper(
+	abortController?: AbortController,
+) {
+	let botNames = await getBotNames(abortController);
 	if (isDev()) {
 		console.log("dev");
 		botNames = botNames.slice(2, 4);
@@ -25,14 +27,22 @@ function ListTable() {
 	const [spinnerLoading, setSpinnerLoading] = useState(true);
 
 	useEffect(() => {
+		const abortController = new AbortController();
+
 		async function fetchAPI() {
-			const botNames = await getBotNamesWrapper();
+			// TODO: pass abortcontroller here as well
+			const botNames = await getBotNamesWrapper(
+				abortController,
+			);
 			const pks = botNames.map((e: string) => createPk(e));
 			const countRequestsToDo = botNames.length;
 			let countRequestsDone = 0;
 
 			for (const pk of pks) {
-				const data = await getLastRenewed(pk);
+				const data = await getLastRenewed(
+					pk,
+					abortController,
+				);
 
 				countRequestsDone++;
 
@@ -70,7 +80,12 @@ function ListTable() {
 		}
 
 		fetchAPI();
-	}, [setAPIData]);
+
+		return () => {
+			abortController.abort(); // cancel the fetch on unmount
+		}
+	}, []);
+
 	return (
 		<div style={{ textAlign: "center" }}>
 			<TailSpin
