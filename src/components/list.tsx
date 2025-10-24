@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
+// TODO: FIX TESTS FAILING
 import { TailSpin } from "react-loader-spinner";
 import { Icon, Menu, Table } from "semantic-ui-react";
 import { orderBots } from "../utils/botutils";
