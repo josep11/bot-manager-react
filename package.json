@@ -43,7 +43,7 @@
 		"semantic-ui-react": "^2.1.5",
 		"sonner": "^2.0.7",
 		"vite": "^7.1.12",
-		"vitest": "^3.2.4",
+		"vitest": "^4.0.2",
 		"web-vitals": "v4.2.4"
 	}
 }
