@@ -37,7 +37,7 @@
 		"luxon": "^3.7.2",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0",
-		"react-loader-spinner": "^7.0.3",
+		"react-loader-spinner": "^8.0.0",
 		"react-router-dom": "^7.9.4",
 		"semantic-ui-css": "^2.5.0",
 		"semantic-ui-react": "^2.1.5",
