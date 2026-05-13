@@ -33,7 +33,7 @@ npm/audit-fix:
 
 ## Run update deps for all of them
 update-deps:
-	ncu -u && npm i && npm test
+	ncu -u -x vite -x jsdom -x @vitejs/plugin-react && npm i && npm test
 
 .PHONY: list test build
 .PHONY: tag
